@@ -8,10 +8,12 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.WindowManager;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
@@ -21,7 +23,7 @@ import java.util.HashMap;
 
 import okhttp3.Call;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private static final int MSG_REFLASH_VIDEO = 0;
 
@@ -30,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     WebView mWebView2;
     ImageView image;
     VideoDataEntry mVideoDateEntry;
+    TextView mLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,11 +47,21 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        android.support.v7.app.ActionBar bar = getSupportActionBar();
 
+
+
+//        bar.setHomeAsUpIndicator(R.drawable.common_full_open_on_phone);
+//        bar.setDisplayHomeAsUpEnabled(true);
+
+
+        mLayout = (TextView) findViewById(R.id.expandLayout);
         mWebView = (WebView) findViewById(R.id.webview);
         mWebView1 = (WebView) findViewById(R.id.webview3);
         mWebView2 = (WebView) findViewById(R.id.webview2);
         image = (ImageView) findViewById(R.id.video_image);
+        findViewById(R.id.imageButton).setOnClickListener(this);
+
 
         mWebView.getSettings().setJavaScriptEnabled(true);
         mWebView.getSettings().setPluginState(WebSettings.PluginState.ON);
@@ -133,5 +146,20 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onClick(View v) {
+
+    Log.i("kxyu","dsadasdsad");
+        if(v.getId() == R.id.imageButton)
+        {
+
+            Log.i("kxyu","1");
+            if(mLayout.getVisibility() == View.VISIBLE)
+            mLayout.setVisibility(View.GONE);
+            else
+            mLayout.setVisibility(View.VISIBLE);
+        }
     }
 }
