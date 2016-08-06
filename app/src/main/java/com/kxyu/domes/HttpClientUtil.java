@@ -4,7 +4,7 @@ import com.kxyu.domes.okhttp.OkHttpUtils;
 import com.kxyu.domes.okhttp.callback.StringCallback;
 
 /**
- * Created by lewa on 16-8-2.
+ * Created by kxyu on 16-8-2.
  */
 public class HttpClientUtil {
     private static final String XSCREEN_URL = "http://newsapi.revanow.com/api/";

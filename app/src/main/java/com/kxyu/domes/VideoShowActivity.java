@@ -10,9 +10,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.webkit.WebResourceError;
+import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -23,16 +27,18 @@ import java.util.HashMap;
 
 import okhttp3.Call;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class VideoShowActivity extends AppCompatActivity implements View.OnClickListener {
 
     private static final int MSG_REFLASH_VIDEO = 0;
 
     WebView mWebView;
-    WebView mWebView1;
-    WebView mWebView2;
     ImageView image;
     VideoDataEntry mVideoDateEntry;
     TextView mLayout;
+    ProgressBar mVideoProgress;
+    ImageView  mVideoMask;
+
+    boolean mIsError =false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,44 +49,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_video_show);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        android.support.v7.app.ActionBar bar = getSupportActionBar();
-
-
-
+//        android.support.v7.app.ActionBar bar = getSupportActionBar();
 //        bar.setHomeAsUpIndicator(R.drawable.common_full_open_on_phone);
 //        bar.setDisplayHomeAsUpEnabled(true);
 
 
         mLayout = (TextView) findViewById(R.id.expandLayout);
-        mWebView = (WebView) findViewById(R.id.webview);
-        mWebView1 = (WebView) findViewById(R.id.webview3);
-        mWebView2 = (WebView) findViewById(R.id.webview2);
+
         image = (ImageView) findViewById(R.id.video_image);
+        mVideoProgress = (ProgressBar) findViewById(R.id.video_progress);
+        mVideoMask = (ImageView) findViewById(R.id.video_mask);
+
         findViewById(R.id.imageButton).setOnClickListener(this);
 
 
-        mWebView.getSettings().setJavaScriptEnabled(true);
-        mWebView.getSettings().setPluginState(WebSettings.PluginState.ON);
-      //  mWebView.setVisibility(View.VISIBLE);
-        mWebView.getSettings().setUseWideViewPort(true);
 
 
-
-
-        mWebView1.getSettings().setJavaScriptEnabled(true);
-        mWebView1.getSettings().setPluginState(WebSettings.PluginState.ON);
-        //  mWebView.setVisibility(View.VISIBLE);
-        mWebView1.getSettings().setUseWideViewPort(true);
-
-
-        mWebView2.getSettings().setJavaScriptEnabled(true);
-        mWebView2.getSettings().setPluginState(WebSettings.PluginState.ON);
-        //  mWebView.setVisibility(View.VISIBLE);
-        mWebView2.getSettings().setUseWideViewPort(true);
         getVideo();
 
     }
@@ -91,9 +79,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             super.handleMessage(msg);
             if (msg.what == MSG_REFLASH_VIDEO) {
 
-                mWebView.loadUrl(mVideoDateEntry.videosDataEntryList.get(0).detailUrl);
-                mWebView1.loadUrl(mVideoDateEntry.videosDataEntryList.get(1).detailUrl);
-                mWebView2.loadUrl(mVideoDateEntry.videosDataEntryList.get(2).detailUrl);
+                initWebView();
 
                 Glide.with(getApplicationContext())
                         .load(mVideoDateEntry.videosDataEntryList.get(0).imgInfoList.get(0).thumb).placeholder(R.drawable.item_image_default).into(image);
@@ -102,6 +88,45 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         }
     };
+
+
+    public void initWebView()
+    {
+
+        mWebView = (WebView) findViewById(R.id.webview);
+        mWebView.getSettings().setJavaScriptEnabled(true);
+        mWebView.getSettings().setPluginState(WebSettings.PluginState.ON);
+        mWebView.getSettings().setUseWideViewPort(true);
+
+        mWebView.setWebViewClient(new WebViewClient(){
+            @Override
+            public void onPageFinished(WebView view, String url)
+            {
+                if(!mIsError) {
+                    mVideoMask.setVisibility(View.GONE);
+                    mVideoProgress.setVisibility(View.GONE);
+                }
+//                mIsWebviewLoadFinish = true;
+//                if(DeviceUtil.isLoadImage(VideoNewsDetailsActivity.this)){
+//                    mWebView.loadUrl("javascript:callJsFuc_SetImageMode()");
+//                }
+//                else {
+//                    mWebView.loadUrl("javascript:callJsFuc_SetNoImageMode()");
+//                }
+
+                mWebView.loadUrl(mVideoDateEntry.videosDataEntryList.get(0).detailUrl);
+            }
+            @Override
+            public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
+                super.onReceivedError(view, request, error);
+                mIsError = true;
+                mVideoMask.setVisibility(View.VISIBLE);
+                mVideoProgress.setVisibility(View.GONE);
+            }
+
+        });
+
+    }
 
     public void getVideo() {
 

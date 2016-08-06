@@ -6,8 +6,8 @@
     android:layout_height="match_parent"
 
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.kxyu.domes.MainActivity"
-    tools:showIn="@layout/activity_main">
+    tools:context=".VideoShowActivity"
+    tools:showIn="@layout/activity_video_show">
 
     <!--<TextView-->
     <!--android:layout_width="wrap_content"-->
@@ -30,15 +30,30 @@
             android:layout_gravity="center"
             >
 
-            <WebView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:fitsSystemWindows="true"
-                android:id="@+id/webview"
-                android:background="@drawable/item_image_default"
-
-                />
+            <FrameLayout
+                android:id="@+id/mask_layout"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:orientation="vertical">
+                <WebView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/webview" />
+                <ImageView
+                    android:id="@+id/video_mask"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#000000"
+                    android:layout_gravity="center"
+                    />
+                <ProgressBar
+                    android:id="@+id/video_progress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="?android:progressBarStyleSmall"
+                    android:layout_gravity="center"
+                    />
+            </FrameLayout>
             <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
