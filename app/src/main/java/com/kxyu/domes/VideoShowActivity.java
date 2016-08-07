@@ -1,5 +1,6 @@
 package com.kxyu.domes;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -69,8 +70,11 @@ public class VideoShowActivity extends AppCompatActivity implements View.OnClick
 
 
 
-        getVideo();
+        mVideoMask.setVisibility(View.GONE);
+        mVideoProgress.setVisibility(View.GONE);
 
+        Log.i("kxyu","1");
+        getVideo();
     }
 
     private Handler mHandler = new Handler() {
@@ -81,6 +85,7 @@ public class VideoShowActivity extends AppCompatActivity implements View.OnClick
 
                 initWebView();
 
+                Log.i("kxyu","seccuss");
                 Glide.with(getApplicationContext())
                         .load(mVideoDateEntry.videosDataEntryList.get(0).imgInfoList.get(0).thumb).placeholder(R.drawable.item_image_default).into(image);
 
@@ -94,18 +99,22 @@ public class VideoShowActivity extends AppCompatActivity implements View.OnClick
     {
 
         mWebView = (WebView) findViewById(R.id.webview);
+        mWebView.setBackgroundColor(0);
+        mWebView.setBackgroundResource(R.drawable.item_image_default);
         mWebView.getSettings().setJavaScriptEnabled(true);
         mWebView.getSettings().setPluginState(WebSettings.PluginState.ON);
         mWebView.getSettings().setUseWideViewPort(true);
 
+        mWebView.loadUrl(mVideoDateEntry.videosDataEntryList.get(0).detailUrl);
+        Log.i("kxyu","set");
         mWebView.setWebViewClient(new WebViewClient(){
             @Override
             public void onPageFinished(WebView view, String url)
             {
-                if(!mIsError) {
+           Log.i("kxyu","finish");
                     mVideoMask.setVisibility(View.GONE);
                     mVideoProgress.setVisibility(View.GONE);
-                }
+
 //                mIsWebviewLoadFinish = true;
 //                if(DeviceUtil.isLoadImage(VideoNewsDetailsActivity.this)){
 //                    mWebView.loadUrl("javascript:callJsFuc_SetImageMode()");
@@ -113,17 +122,27 @@ public class VideoShowActivity extends AppCompatActivity implements View.OnClick
 //                else {
 //                    mWebView.loadUrl("javascript:callJsFuc_SetNoImageMode()");
 //                }
-
-                mWebView.loadUrl(mVideoDateEntry.videosDataEntryList.get(0).detailUrl);
             }
             @Override
             public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
                 super.onReceivedError(view, request, error);
                 mIsError = true;
+                Log.i("kxyu","error");
                 mVideoMask.setVisibility(View.VISIBLE);
                 mVideoProgress.setVisibility(View.GONE);
             }
 
+            @Override
+            public void onPageStarted(WebView view, String url, Bitmap favicon)
+            {
+                //开始
+                super.onPageStarted(view, url, favicon);
+                mVideoMask.setVisibility(View.VISIBLE);
+                mVideoProgress.setVisibility(View.VISIBLE);
+
+                Log.i("kxyu","start");
+
+            }
         });
 
     }
@@ -144,10 +163,10 @@ public class VideoShowActivity extends AppCompatActivity implements View.OnClick
 
             @Override
             public void onResponse(String response, int id) {
-                Log.d("shunlidata", "response = " + response.toString());
+                Log.d("kxyu", "response = " + response.toString());
                 Gson gson = new Gson();
                 mVideoDateEntry = gson.fromJson(response, VideoDataEntry.class);
-                Log.d("shunlidata", "newsCardDataEntry = " + mVideoDateEntry.videosDataEntryList.toString());
+                Log.d("kxyu", "newsCardDataEntry = " + mVideoDateEntry.videosDataEntryList.toString());
                 mHandler.sendEmptyMessage(MSG_REFLASH_VIDEO);
             }
         });
