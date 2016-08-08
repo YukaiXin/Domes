@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    android:id="@+id/home_item_root_view"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:descendantFocusability="blocksDescendants">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/screen_margin_edge"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/tv_news_article_title"
+            android:text="title"
+            android:textColor="@color/text_color"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_marginTop="@dimen/screen_margin_edge"
+            android:layout_height="200dp">
+            <ImageView
+                android:id="@+id/iv_news_video"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:transitionName="photos" />
+            <ImageView android:layout_width="30dip"
+                android:layout_height="30dip"
+                android:id="@+id/iv_play"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_play_circle_outline_black_24px"/>
+        </FrameLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_time"
+            android:layout_marginLeft="12dp"
+            android:gravity="left"
+            android:text="just now"
+            android:textSize="10sp"
+            android:singleLine="true"
+            android:layout_weight="1"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textColor="#727272"
+            />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginLeft="@dimen/vidoes_margin"
+            android:layout_marginRight="@dimen/vidoes_margin"
+            android:layout_marginTop="@dimen/vidoes_margin"
+            android:background="@color/list_divider"/>
+
+    </LinearLayout>
+</FrameLayout>

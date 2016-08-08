@@ -5,6 +5,9 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
@@ -20,7 +23,6 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 import com.kxyu.domes.okhttp.callback.StringCallback;
 
@@ -33,12 +35,16 @@ public class VideoShowActivity extends AppCompatActivity implements View.OnClick
     private static final int MSG_REFLASH_VIDEO = 0;
 
     WebView mWebView;
-    ImageView image;
     VideoDataEntry mVideoDateEntry;
-    TextView mLayout;
+    TextView mVideoTitle;
     ProgressBar mVideoProgress;
     ImageView  mVideoMask;
 
+
+
+    VideosListRecyclerAdapter adapter;
+
+    RecyclerView mRecyclerView;
     boolean mIsError =false;
 
     @Override
@@ -54,21 +60,17 @@ public class VideoShowActivity extends AppCompatActivity implements View.OnClick
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-//        android.support.v7.app.ActionBar bar = getSupportActionBar();
-//        bar.setHomeAsUpIndicator(R.drawable.common_full_open_on_phone);
-//        bar.setDisplayHomeAsUpEnabled(true);
 
-
-        mLayout = (TextView) findViewById(R.id.expandLayout);
-
-        image = (ImageView) findViewById(R.id.video_image);
+        mVideoTitle = (TextView) findViewById(R.id.video_title);
+        mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         mVideoProgress = (ProgressBar) findViewById(R.id.video_progress);
         mVideoMask = (ImageView) findViewById(R.id.video_mask);
 
-        findViewById(R.id.imageButton).setOnClickListener(this);
 
-
-
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        mRecyclerView.setLayoutManager(layoutManager);
+        //设置增加或删除条目的动画
+        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
 
         mVideoMask.setVisibility(View.GONE);
         mVideoProgress.setVisibility(View.GONE);
@@ -82,12 +84,11 @@ public class VideoShowActivity extends AppCompatActivity implements View.OnClick
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             if (msg.what == MSG_REFLASH_VIDEO) {
-
+                adapter = new VideosListRecyclerAdapter(getApplication(),mVideoDateEntry);
+                mRecyclerView.setAdapter(adapter);
                 initWebView();
 
                 Log.i("kxyu","seccuss");
-                Glide.with(getApplicationContext())
-                        .load(mVideoDateEntry.videosDataEntryList.get(0).imgInfoList.get(0).thumb).placeholder(R.drawable.item_image_default).into(image);
 
 
             }
@@ -105,6 +106,7 @@ public class VideoShowActivity extends AppCompatActivity implements View.OnClick
         mWebView.getSettings().setPluginState(WebSettings.PluginState.ON);
         mWebView.getSettings().setUseWideViewPort(true);
 
+        mVideoTitle.setText(mVideoDateEntry.videosDataEntryList.get(0).content);
         mWebView.loadUrl(mVideoDateEntry.videosDataEntryList.get(0).detailUrl);
         Log.i("kxyu","set");
         mWebView.setWebViewClient(new WebViewClient(){
@@ -195,15 +197,6 @@ public class VideoShowActivity extends AppCompatActivity implements View.OnClick
     @Override
     public void onClick(View v) {
 
-    Log.i("kxyu","dsadasdsad");
-        if(v.getId() == R.id.imageButton)
-        {
 
-            Log.i("kxyu","1");
-            if(mLayout.getVisibility() == View.VISIBLE)
-            mLayout.setVisibility(View.GONE);
-            else
-            mLayout.setVisibility(View.VISIBLE);
-        }
     }
 }
