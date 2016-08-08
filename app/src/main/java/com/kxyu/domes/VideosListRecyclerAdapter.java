@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.kxyu.domes.callback.OnItemClickListener;
 
 
 /**
@@ -20,7 +21,7 @@ public class VideosListRecyclerAdapter extends RecyclerView.Adapter<VideosListRe
     private Context mContext;
     private LayoutInflater inflater;
     private VideoDataEntry mVideoDateEntry;
-
+    private OnItemClickListener mClickListener;
     public VideosListRecyclerAdapter(Context context,VideoDataEntry mVideoDataEntry){
         this. mContext=context;
         this.mVideoDateEntry = mVideoDataEntry;
@@ -39,20 +40,36 @@ public class VideosListRecyclerAdapter extends RecyclerView.Adapter<VideosListRe
     @Override
     public void onBindViewHolder(MyViewHolder holder, final int position) {
 
-
         holder.mTitle.setText(mVideoDateEntry.videosDataEntryList.get(position + 1).content);
         Glide.with(mContext).load(mVideoDateEntry.videosDataEntryList.get(position + 1).imgInfoList.get(0).thumb).asBitmap()
                 .placeholder(R.drawable.item_image_default).into(holder.mImage);
     }
 
-    //重写onCreateViewHolder方法，返回一个自定义的ViewHolder
-    @Override
-    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        View view = inflater.inflate(R.layout.item_news_video,parent, false);
-        MyViewHolder holder= new MyViewHolder(view);
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        mClickListener = listener;
+    }
+
+    @Override
+    public MyViewHolder onCreateViewHolder(final ViewGroup parent, final int viewType) {
+
+        final View view = inflater.inflate(R.layout.item_news_video,parent, false);
+        final MyViewHolder holder= new MyViewHolder(view);
+
+
+        final MyViewHolder finalHolder = holder;
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mClickListener.onItemClick(v, finalHolder.getLayoutPosition(),viewType);
+                }
+            });
+
+
         return holder;
     }
+
+
 
     class MyViewHolder extends RecyclerView.ViewHolder {
 //

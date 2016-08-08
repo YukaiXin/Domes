@@ -1,9 +1,11 @@
 package com.kxyu.domes;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -24,6 +26,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
+import com.kxyu.domes.callback.OnItemClickListener;
 import com.kxyu.domes.okhttp.callback.StringCallback;
 
 import java.util.HashMap;
@@ -86,6 +89,20 @@ public class VideoShowActivity extends AppCompatActivity implements View.OnClick
             if (msg.what == MSG_REFLASH_VIDEO) {
                 adapter = new VideosListRecyclerAdapter(getApplication(),mVideoDateEntry);
                 mRecyclerView.setAdapter(adapter);
+                adapter.setOnItemClickListener(new OnItemClickListener() {
+
+                    @Override
+                    public void onItemClick(View view, int position) {
+
+                        if(position == -1 ) return;
+
+                        adapter.notifyItemChanged(position);
+                        Intent  intent = new Intent(VideoShowActivity.this,VideoShowActivity.class);
+                        intent.putExtra("video_url", mVideoDateEntry.videosDataEntryList.get(position).detailUrl);
+                        ActivityCompat.startActivity(VideoShowActivity.this, intent,null);
+                    }
+
+                });
                 initWebView();
 
                 Log.i("kxyu","seccuss");
@@ -117,13 +134,6 @@ public class VideoShowActivity extends AppCompatActivity implements View.OnClick
                     mVideoMask.setVisibility(View.GONE);
                     mVideoProgress.setVisibility(View.GONE);
 
-//                mIsWebviewLoadFinish = true;
-//                if(DeviceUtil.isLoadImage(VideoNewsDetailsActivity.this)){
-//                    mWebView.loadUrl("javascript:callJsFuc_SetImageMode()");
-//                }
-//                else {
-//                    mWebView.loadUrl("javascript:callJsFuc_SetNoImageMode()");
-//                }
             }
             @Override
             public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
@@ -182,9 +192,6 @@ public class VideoShowActivity extends AppCompatActivity implements View.OnClick
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
