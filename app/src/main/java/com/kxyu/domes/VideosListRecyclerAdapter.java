@@ -36,13 +36,25 @@ public class VideosListRecyclerAdapter extends RecyclerView.Adapter<VideosListRe
         return 5;
     }
 
-
     @Override
-    public void onBindViewHolder(MyViewHolder holder, final int position) {
+    public void onBindViewHolder(final MyViewHolder holder, final int position) {
 
-        holder.mTitle.setText(mVideoDateEntry.videosDataEntryList.get(position + 1).content);
-        Glide.with(mContext).load(mVideoDateEntry.videosDataEntryList.get(position + 1).imgInfoList.get(0).thumb).asBitmap()
+        holder.mTitle.setText(mVideoDateEntry.videosDataEntryList.get(position).content);
+        Glide.with(mContext).load(mVideoDateEntry.videosDataEntryList.get(position).imgInfoList.get(0).thumb).asBitmap()
                 .placeholder(R.drawable.item_image_default).into(holder.mImage);
+
+        if (mClickListener != null)
+        {
+            holder.itemView.setOnClickListener(new View.OnClickListener()
+            {
+                @Override
+                public void onClick(View v)
+                {
+                    int pos = holder.getLayoutPosition();
+                    mClickListener.onItemClick(holder.itemView, pos);
+                }
+            });
+        }
     }
 
 
@@ -58,13 +70,6 @@ public class VideosListRecyclerAdapter extends RecyclerView.Adapter<VideosListRe
 
 
         final MyViewHolder finalHolder = holder;
-            holder.itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    mClickListener.onItemClick(v, finalHolder.getLayoutPosition(),viewType);
-                }
-            });
-
 
         return holder;
     }

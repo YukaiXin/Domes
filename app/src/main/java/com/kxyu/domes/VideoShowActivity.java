@@ -24,6 +24,7 @@ import android.webkit.WebViewClient;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.kxyu.domes.callback.OnItemClickListener;
@@ -43,8 +44,6 @@ public class VideoShowActivity extends AppCompatActivity implements View.OnClick
     ProgressBar mVideoProgress;
     ImageView  mVideoMask;
 
-
-
     VideosListRecyclerAdapter adapter;
 
     RecyclerView mRecyclerView;
@@ -63,12 +62,10 @@ public class VideoShowActivity extends AppCompatActivity implements View.OnClick
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
         mVideoTitle = (TextView) findViewById(R.id.video_title);
         mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         mVideoProgress = (ProgressBar) findViewById(R.id.video_progress);
         mVideoMask = (ImageView) findViewById(R.id.video_mask);
-
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(layoutManager);
@@ -84,7 +81,7 @@ public class VideoShowActivity extends AppCompatActivity implements View.OnClick
 
     private Handler mHandler = new Handler() {
         @Override
-        public void handleMessage(Message msg) {
+        public void handleMessage(final Message msg) {
             super.handleMessage(msg);
             if (msg.what == MSG_REFLASH_VIDEO) {
                 adapter = new VideosListRecyclerAdapter(getApplication(),mVideoDateEntry);
@@ -94,28 +91,31 @@ public class VideoShowActivity extends AppCompatActivity implements View.OnClick
                     @Override
                     public void onItemClick(View view, int position) {
 
+                        Toast.makeText(getApplication(),".....",Toast.LENGTH_SHORT).show();
                         if(position == -1 ) return;
 
                         adapter.notifyItemChanged(position);
                         Intent  intent = new Intent(VideoShowActivity.this,VideoShowActivity.class);
                         intent.putExtra("video_url", mVideoDateEntry.videosDataEntryList.get(position).detailUrl);
+                        //intent.putExtra("")
                         ActivityCompat.startActivity(VideoShowActivity.this, intent,null);
-                    }
 
+//                        intent = new Intent(VideoNewsDetailsActivity.this,VideoNewsDetailsActivity.class);
+//                        intent.putExtra("id", mAdapter.getData().get(position).id);
+//                        intent.putExtra("type",mAdapter.getData().get(position).type);
+//                        intent.putExtra("news",JsonUtil.parseObjectToJsonString(mAdapter.getData().get(position)));
+//                        intent.putExtra("detail_url",mAdapter.getData().get(position).detail_url);
+//                        intent.putExtra("title",mAdapter.getData().get(position).content);
+//                        ActivityCompat.startActivity(VideoNewsDetailsActivity.this, intent, options.toBundle());
+                    }
                 });
                 initWebView();
-
-                Log.i("kxyu","seccuss");
-
-
             }
         }
     };
 
-
     public void initWebView()
     {
-
         mWebView = (WebView) findViewById(R.id.webview);
         mWebView.setBackgroundColor(0);
         mWebView.setBackgroundResource(R.drawable.item_image_default);
@@ -133,7 +133,6 @@ public class VideoShowActivity extends AppCompatActivity implements View.OnClick
            Log.i("kxyu","finish");
                     mVideoMask.setVisibility(View.GONE);
                     mVideoProgress.setVisibility(View.GONE);
-
             }
             @Override
             public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
@@ -147,13 +146,9 @@ public class VideoShowActivity extends AppCompatActivity implements View.OnClick
             @Override
             public void onPageStarted(WebView view, String url, Bitmap favicon)
             {
-                //开始
                 super.onPageStarted(view, url, favicon);
                 mVideoMask.setVisibility(View.VISIBLE);
                 mVideoProgress.setVisibility(View.VISIBLE);
-
-                Log.i("kxyu","start");
-
             }
         });
 
