@@ -75,6 +75,7 @@ public class VideoShowActivity extends AppCompatActivity implements View.OnClick
         mVideoMask.setVisibility(View.GONE);
         mVideoProgress.setVisibility(View.GONE);
 
+        mVideoTitle.setOnClickListener(this);
         Log.i("kxyu","1");
         getVideo();
     }
@@ -199,6 +200,11 @@ public class VideoShowActivity extends AppCompatActivity implements View.OnClick
     @Override
     public void onClick(View v) {
 
+            if(v.getId() == R.id.video_title){
+
+                Intent intent = new Intent(this,WebdetailActivity.class);
+                startActivity(intent);
+            }
 
     }
 }
