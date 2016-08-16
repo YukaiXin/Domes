@@ -1,0 +1,82 @@
+<html>
+<head>
+    <title>News</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,
+    minimum-scale=1.0, user-scalable=no"/>
+    <style type="text/css">
+        {style}
+    </style>
+
+</head>
+<body>
+<h2 id="title" style="margin:{chapterMarginTop}px 0px 12px 12px; ">
+    {title}
+</h2>
+
+<p id="source">{source}</p>
+
+<div id="content">
+    {html}
+</div>
+</body>
+
+<script type="text/javascript">
+var Sfont = [1.0,0.8,0.4];
+var Mfont = [1.2,1.0,0.6];
+var Lfont = [1.4,1.2,0.8];
+var XLfont = [1.6,1.4,1.0];
+
+
+function showImage (obj,src) {
+    if (obj.src.indexOf('click_load_day.png')<0 && obj.src.indexOf('click_load_night.png')<0)
+        Android.displayImage(src);
+    else
+        obj.src=src;
+}
+
+function callJsFuc_SetNightMode(){
+        document.getElementById("content").style.color="#a4a4a4";
+        document.getElementById("title").style.color="#a4a4a4";
+        document.getElementById("source").style.color="#a4a4a4";
+        document.body.style.backgroundColor="#222222";
+        }
+
+function callJsFuc_SetDayMode(){
+        document.getElementById("content").style.color="#464646";
+        document.getElementById("title").style.color="#FF44";
+        document.getElementById("source").style.color="#464646";
+        document.body.style.backgroundColor="#ffffff";
+}
+
+function callJsFuc_SetFontSize(fontSize){
+    changeFont(fontSize);
+}
+
+function changeFont(sizetype){
+            var sizeArr;
+            switch(sizetype){
+                case "s":
+                    sizeArr = Sfont;
+                    break;
+                case "m":
+                    sizeArr = Mfont;
+                    break;
+                case "l":
+                    sizeArr = Lfont;
+                    break;
+                case "xl":
+                    sizeArr = XLfont;
+                    break;
+                default:
+                    sizeArr = Mfont;
+                    break;
+            }
+            document.getElementById("content").style.lineHeight=1.6;
+            document.getElementById("title").style.fontSize=sizeArr[0]+"rem";
+            document.getElementById("content").style.fontSize=sizeArr[1]+"rem";
+            document.getElementById("source").style.fontSize=sizeArr[2]+"rem";
+        }
+
+    </script>
+
+</html>
