@@ -7,16 +7,11 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.view.View;
-import android.view.ViewGroup;
 
 /**
  * Created by lewa on 16-8-23.
  */
 public class Card extends View {
-
-    public Card(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
-        super(context, attrs, defStyleAttr, defStyleRes);
-    }
 
 
     private Paint mPaint;
@@ -25,15 +20,12 @@ public class Card extends View {
     private int mColor;
     private String mTitle;
 
-
-
-    @Override
-    public ViewGroup.LayoutParams getLayoutParams() {
-        return super.getLayoutParams();
+    public Card(Context context,AttributeSet attrs){
+        super(context,attrs);
     }
-
     public Card(Context context, String title, int color){
         super(context);
+       mPaint = new Paint();
         mContext = context;
         mTitle = title;
         mColor = color;

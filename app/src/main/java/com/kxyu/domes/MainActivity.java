@@ -19,9 +19,13 @@ public class MainActivity extends Activity implements View.OnClickListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        setContentView(R.layout.main_layout);
         gridViewBtn = (Button) findViewById(R.id.button);
         videoBtn = (Button) findViewById(R.id.button2);
+
+
+        gridViewBtn.setOnClickListener(this);
+        videoBtn.setOnClickListener(this);
     }
 
 
