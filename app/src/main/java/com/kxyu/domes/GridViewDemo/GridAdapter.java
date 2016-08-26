@@ -45,7 +45,6 @@ public class GridAdapter extends  RecyclerView.Adapter<GridAdapter.MyViewHolder>
 
     }
 
-
     @Override
     public int getItemCount() {
         return mDrawableList.size();
