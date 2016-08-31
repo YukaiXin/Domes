@@ -59,9 +59,25 @@ public class VideoShowActivity extends AppCompatActivity implements View.OnClick
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         setContentView(R.layout.activity_video_show);
+       initView();
+        Log.i("kxyu","1");
+        getVideo();
+    }
+
+    private void initView(){
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(this.getResources().getDrawable(R.mipmap.action_bar_back));
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         mVideoTitle = (TextView) findViewById(R.id.video_title);
         mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         mVideoProgress = (ProgressBar) findViewById(R.id.video_progress);
@@ -76,8 +92,7 @@ public class VideoShowActivity extends AppCompatActivity implements View.OnClick
         mVideoProgress.setVisibility(View.GONE);
 
         mVideoTitle.setOnClickListener(this);
-        Log.i("kxyu","1");
-        getVideo();
+
     }
 
     private Handler mHandler = new Handler() {
