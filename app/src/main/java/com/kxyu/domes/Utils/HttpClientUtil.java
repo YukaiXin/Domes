@@ -1,4 +1,4 @@
-package com.kxyu.domes;
+package com.kxyu.domes.Utils;
 
 import com.kxyu.domes.okhttp.OkHttpUtils;
 import com.kxyu.domes.okhttp.callback.StringCallback;

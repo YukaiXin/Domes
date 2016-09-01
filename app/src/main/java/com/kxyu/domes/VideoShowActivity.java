@@ -27,6 +27,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.kxyu.domes.Utils.HttpClientUtil;
 import com.kxyu.domes.callback.OnItemClickListener;
 import com.kxyu.domes.okhttp.callback.StringCallback;
 
