@@ -9,7 +9,10 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -23,12 +26,12 @@
         android:text="Video"
         android:id="@+id/button2" />
 
-    <com.kxyu.domes.defineView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:id="@+id/view"
-
-        />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Advter"
+        android:id="@+id/ad_btn" />
+</LinearLayout>
 
 
 </LinearLayout>
