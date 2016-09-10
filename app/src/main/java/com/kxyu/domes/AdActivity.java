@@ -36,8 +36,9 @@ public class AdActivity extends AppCompatActivity{
 
         imageView = (ImageView) findViewById(R.id.ad_iv);
         textView = (TextView) findViewById(R.id.ad_tv);
+        //Log.i("kxyu_ad","AD  : "+ )
 
-        AdLoader adLoader = new AdLoader.Builder(this, "P56MD4a9vtXm")
+        AdLoader adLoader = new AdLoader.Builder(this, "bihoMKqsjyds")
                 .setListener(new AdLoader.AdListener() {
                     @Override
                     public void onNativeDataSucceeded(AdData adData) {
@@ -45,6 +46,8 @@ public class AdActivity extends AppCompatActivity{
                         Log.i("kxyu_ad", "ad");
                         for (AdImageInfo adImageInfo : adData.getAdImageInfos()) {
                             RequestManager requestManager = Glide.with(AdActivity.this);
+                            Log.i("kxyu_ad", "ad : "+adImageInfo.getName() + "img  "+adImageInfo.getUri());
+
                             GlideRoundTransform glideRoundTransform = new GlideRoundTransform(AdActivity.this, 2);
                             requestManager.load(adImageInfo.getUri()).transform(glideRoundTransform).placeholder(R.mipmap.black_mask).
                                     into(imageView);
@@ -52,7 +55,8 @@ public class AdActivity extends AppCompatActivity{
 
                         for (AdTextInfo adTextInfo : adData.getAdTextInfos()) {
                             textView.setText(adTextInfo.getText());
-                            Log.i("kxyu_ad", adTextInfo.getText());
+                            Log.i("kxyu_ad", adTextInfo.getText() + " 2 : "+adTextInfo.getName()+" 3 : "+adTextInfo.toString());
+
                         }
                     }
 
