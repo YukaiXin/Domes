@@ -30,7 +30,7 @@ public class WebdetailActivity extends AppCompatActivity {
         mWebView.getSettings().setDefaultTextEncodingName("utf-8");
         mWebView.getSettings().setPluginState(WebSettings.PluginState.ON);
         mWebView.setBackgroundColor(Color.parseColor("#000000"));
-        mWebView.loadUrl("http://baidu.com");
+        mWebView.loadUrl("http://newsapi.revanow.com/articles/?id=57d7030ee2645073d58b8ba3&language=english&type=youtube_video");
 
         mWebView.setWebViewClient(new WebViewClient(){
             @Override

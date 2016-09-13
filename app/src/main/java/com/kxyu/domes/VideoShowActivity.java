@@ -190,7 +190,6 @@ public class VideoShowActivity extends AppCompatActivity implements View.OnClick
                 Log.d("kxyu", "response = " + response.toString());
                 Gson gson = new Gson();
                 mVideoDateEntry = gson.fromJson(response, VideoDataEntry.class);
-                Log.d("kxyu", "newsCardDataEntry = " + mVideoDateEntry.videosDataEntryList.toString());
                 mHandler.sendEmptyMessage(MSG_REFLASH_VIDEO);
             }
         });
