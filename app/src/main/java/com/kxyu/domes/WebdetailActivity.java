@@ -56,5 +56,10 @@ public class WebdetailActivity extends AppCompatActivity {
         });
     }
 
-
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        //　activity 销毁时　webview播放的视频　继续播放
+        mWebView.reload();
+    }
 }
