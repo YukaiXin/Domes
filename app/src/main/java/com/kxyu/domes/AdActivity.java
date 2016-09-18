@@ -28,11 +28,9 @@ public class AdActivity extends AppCompatActivity{
         setContentView(R.layout.activity_ad);
         adNativeLayout = (AdNativeLayout) findViewById(R.id.ad);
         initView();
-
     }
 
     public void initView(){
-
 
         imageView = (ImageView) findViewById(R.id.ad_iv);
         textView = (TextView) findViewById(R.id.ad_tv);
@@ -56,7 +54,6 @@ public class AdActivity extends AppCompatActivity{
                         for (AdTextInfo adTextInfo : adData.getAdTextInfos()) {
                             textView.setText(adTextInfo.getText());
                             Log.i("kxyu_ad", adTextInfo.getText() + " 2 : "+adTextInfo.getName()+" 3 : "+adTextInfo.toString());
-
                         }
                     }
 
@@ -67,5 +64,4 @@ public class AdActivity extends AppCompatActivity{
                 }).build();
         adLoader.startLoad();
     }
-
 }
