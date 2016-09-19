@@ -8,7 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.WindowManager;
 
 /**
- * Created by shunli on 16-8-9.
+ * Created by kxyu on 16-8-9.
  */
 abstract class BaseActivity extends AppCompatActivity {
     @Override
