@@ -48,9 +48,6 @@ public class VideoDataEntry {
         @SerializedName("has_commented")
         public String hasCommented;
 
-
-
-
         @SerializedName("type")
         public String type;
 

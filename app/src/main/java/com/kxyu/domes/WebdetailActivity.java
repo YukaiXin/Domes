@@ -85,8 +85,6 @@ public class WebdetailActivity extends AppCompatActivity {
             mWebView = null;
         }
 
-
-
         super.onDestroy();
     }
 
