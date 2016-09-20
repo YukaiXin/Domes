@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.ViewGroup;
 import android.webkit.WebResourceError;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
@@ -56,10 +57,37 @@ public class WebdetailActivity extends AppCompatActivity {
         });
     }
 
+
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if(mWebView != null) {
+            mWebView.onPause();
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if(mWebView != null) {
+            mWebView.onResume();
+        }
+
+    }
+
     @Override
     protected void onDestroy() {
+//        App.removeActivityFromList(this);
+        if (mWebView != null) {
+            ((ViewGroup)mWebView.getParent()).removeView(mWebView);
+            mWebView.destroy();
+            mWebView = null;
+        }
+
+
+
         super.onDestroy();
-        //　activity 销毁时　webview播放的视频　继续播放
-        mWebView.reload();
     }
+
 }
