@@ -36,7 +36,6 @@
             android:layout_marginBottom="5dp"
             android:id="@+id/video_title" />
 
-
             <FrameLayout
                 android:id="@+id/mask_layout"
                 android:layout_width="match_parent"
