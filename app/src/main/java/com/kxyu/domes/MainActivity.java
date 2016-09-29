@@ -88,7 +88,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             text1.setMovementMethod(LinkMovementMethod.getInstance());
             text1.setText(ss);
 
-
     }
 
     @Override
