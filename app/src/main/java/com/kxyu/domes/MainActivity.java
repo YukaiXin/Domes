@@ -24,6 +24,9 @@ import android.widget.Toast;
 
 import com.kxyu.domes.GridViewDemo.GridViewActivity;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 /**
  * Created by kxyu on 16-8-23.
  */
@@ -32,6 +35,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     Button mGridViewBtn;
     Button mVideoBtn;
     Button mAdBtn;
+    TextView textView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +50,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         mGridViewBtn.setOnClickListener(this);
         mVideoBtn.setOnClickListener(this);
         mAdBtn = (Button) findViewById(R.id.ad_btn);
+        textView = (TextView) findViewById(R.id.text2);
         mAdBtn.setOnClickListener(this);
 
         TextView text1 = (TextView) findViewById(R.id.text1);
@@ -87,6 +92,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             }, 14, 16, SpannableString.SPAN_INCLUSIVE_EXCLUSIVE);
             text1.setMovementMethod(LinkMovementMethod.getInstance());
             text1.setText(ss);
+        String str = "WEATHER,APPS,GAMES,LIFESERVICE,";
+        ArrayList<String> cardList = new ArrayList<>(Arrays.asList(str.split(",")));
+        textView.setText(String.valueOf(cardList.size()));
 
     }
 
