@@ -9,7 +9,7 @@ import android.util.AttributeSet;
 import android.view.View;
 
 /**
- * Created by lewa on 16-8-23.
+ * Created by kxyu on 16-8-23.
  */
 public class Card extends View {
 
@@ -45,7 +45,6 @@ public class Card extends View {
 //
 // //       a.recycle();
 //    }
-
 
     @Override
     protected void onDraw(Canvas canvas)

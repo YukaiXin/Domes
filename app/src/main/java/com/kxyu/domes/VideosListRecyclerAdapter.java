@@ -2,7 +2,6 @@ package com.kxyu.domes;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -66,11 +65,8 @@ public class VideosListRecyclerAdapter extends RecyclerView.Adapter<VideosListRe
     @Override
     public MyViewHolder onCreateViewHolder(final ViewGroup parent, final int viewType) {
 
-        Log.i("kxyu"," ViewType : "+ viewType);
-
         final View view = inflater.inflate(R.layout.item_news_video,parent, false);
         final MyViewHolder holder= new MyViewHolder(view);
-
 
         final MyViewHolder finalHolder = holder;
 
@@ -80,7 +76,6 @@ public class VideosListRecyclerAdapter extends RecyclerView.Adapter<VideosListRe
 
 
     class MyViewHolder extends RecyclerView.ViewHolder {
-//
         TextView mTitle;
         ImageView mImage;
 

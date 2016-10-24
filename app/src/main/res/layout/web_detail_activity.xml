@@ -8,8 +8,6 @@
         android:layout_height="160dp"
         android:id="@+id/webview"
         >
-
-
     </WebView>
 
 </LinearLayout>

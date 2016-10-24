@@ -61,7 +61,6 @@ public class VideoShowActivity extends AppCompatActivity implements View.OnClick
 
         setContentView(R.layout.activity_video_show);
        initView();
-        Log.i("kxyu","1");
         getVideo();
     }
 
@@ -117,13 +116,6 @@ public class VideoShowActivity extends AppCompatActivity implements View.OnClick
                         //intent.putExtra("")
                         ActivityCompat.startActivity(VideoShowActivity.this, intent,null);
 
-//                        intent = new Intent(VideoNewsDetailsActivity.this,VideoNewsDetailsActivity.class);
-//                        intent.putExtra("id", mAdapter.getData().get(position).id);
-//                        intent.putExtra("type",mAdapter.getData().get(position).type);
-//                        intent.putExtra("news",JsonUtil.parseObjectToJsonString(mAdapter.getData().get(position)));
-//                        intent.putExtra("detail_url",mAdapter.getData().get(position).detail_url);
-//                        intent.putExtra("title",mAdapter.getData().get(position).content);
-//                        ActivityCompat.startActivity(VideoNewsDetailsActivity.this, intent, options.toBundle());
                     }
                 });
                 initWebView();
@@ -142,12 +134,11 @@ public class VideoShowActivity extends AppCompatActivity implements View.OnClick
 
         mVideoTitle.setText(mVideoDateEntry.videosDataEntryList.get(0).content);
         mWebView.loadUrl(mVideoDateEntry.videosDataEntryList.get(0).detailUrl);
-        Log.i("kxyu","set");
+
         mWebView.setWebViewClient(new WebViewClient(){
             @Override
             public void onPageFinished(WebView view, String url)
             {
-           Log.i("kxyu","finish");
                     mVideoMask.setVisibility(View.GONE);
                     mVideoProgress.setVisibility(View.GONE);
             }
@@ -155,7 +146,6 @@ public class VideoShowActivity extends AppCompatActivity implements View.OnClick
             public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
                 super.onReceivedError(view, request, error);
                 mIsError = true;
-                Log.i("kxyu","error");
                 mVideoMask.setVisibility(View.VISIBLE);
                 mVideoProgress.setVisibility(View.GONE);
             }

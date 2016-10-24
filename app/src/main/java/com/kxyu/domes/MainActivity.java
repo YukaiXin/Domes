@@ -89,7 +89,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             }, 14, 16, SpannableString.SPAN_INCLUSIVE_EXCLUSIVE);
             text1.setMovementMethod(LinkMovementMethod.getInstance());
             text1.setText(ss);
-        textView.setText(" fees for the purpose of âBeneath living and working Single college students monthly average cost of living as follows: monthly home to send 1,000 8 9 million yen living expenses, 10,000 yen scholarship and 26,000 yen part-time income, etc, and amounted to 13 million six thousand yen. The rent and electricity and gas is 5 million 1,000 yen, boarding fee is 30,000 yen, used for culture and entertainment expenses is 1 million yen. This is the national student life collaborative combination of investigation results.");
 
     }
 
