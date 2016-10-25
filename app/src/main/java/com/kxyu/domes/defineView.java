@@ -26,7 +26,6 @@ public class defineView extends View {
     public void setData (String title, int color){
         mTitle = title;
         mColor = color;
-
     }
 
     @Override
