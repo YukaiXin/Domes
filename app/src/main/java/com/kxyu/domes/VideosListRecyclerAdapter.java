@@ -1,6 +1,8 @@
 package com.kxyu.domes;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +11,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.animation.GlideAnimation;
+import com.bumptech.glide.request.target.SimpleTarget;
 import com.kxyu.domes.callback.OnItemClickListener;
 
 
@@ -40,8 +44,21 @@ public class VideosListRecyclerAdapter extends RecyclerView.Adapter<VideosListRe
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
 
         holder.mTitle.setText(mVideoDateEntry.videosDataEntryList.get(position).content);
-        Glide.with(mContext).load(mVideoDateEntry.videosDataEntryList.get(position).imgInfoList.get(0).thumb).asBitmap()
-                .placeholder(R.drawable.item_image_default).into(holder.mImage);
+        Glide.with(mContext).load(mVideoDateEntry.videosDataEntryList.get(position).imgInfoList.get(0).thumb).asBitmap().into(new SimpleTarget<Bitmap>() {
+            @Override
+            public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
+                holder.mImage.setImageBitmap(resource);
+            }
+            @Override
+            public void onLoadStarted(Drawable placeholder) {
+                holder.mImage.setImageResource(R.drawable.item_image_default);
+            }
+
+            @Override
+            public void onLoadFailed(Exception e, Drawable errorDrawable) {
+                e.printStackTrace();
+            }
+        });
 
         if (mClickListener != null)
         {
