@@ -50,8 +50,10 @@ public class WebdetailActivity extends AppCompatActivity {
         });
     }
 
-
-
+/**webview  在android不同版本，内核不同．
+ * bug 当时用webview播放视频时，按HOME键退出，视屏仍然播放
+ * 按以下的修改，在不同版本中是不同的．
+ */
     @Override
     protected void onPause() {
         super.onPause();
