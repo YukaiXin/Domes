@@ -1,4 +1,4 @@
-package com.kxyu.domes;
+package com.kxyu.domes.activitys;
 
 import android.graphics.Bitmap;
 import android.graphics.Color;
@@ -10,6 +10,8 @@ import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+
+import com.kxyu.domes.R;
 
 /**
  * Created by kxyu on 16-8-10.

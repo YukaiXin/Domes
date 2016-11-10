@@ -1,4 +1,4 @@
-package com.kxyu.domes;
+package com.kxyu.domes.activitys;
 
 
 import android.app.WallpaperManager;

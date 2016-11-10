@@ -1,4 +1,4 @@
-package com.kxyu.domes;
+package com.kxyu.domes.activitys;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -23,6 +23,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.kxyu.domes.GridViewDemo.GridViewActivity;
+import com.kxyu.domes.R;
 
 /**
  * Created by kxyu on 16-8-23.
@@ -33,6 +34,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     Button mVideoBtn;
     Button mAdBtn;
     TextView textView;
+    Button mSvgButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,7 +51,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         mAdBtn = (Button) findViewById(R.id.ad_btn);
         textView = (TextView) findViewById(R.id.text2);
         mAdBtn.setOnClickListener(this);
-
+        mSvgButton = (Button) findViewById(R.id.svg＿btn);
+        mSvgButton.setOnClickListener(this);
         TextView text1 = (TextView) findViewById(R.id.text1);
             String text = "你知不知道我等到花儿都谢了.点我";
             SpannableString ss = new SpannableString(text);
@@ -69,7 +72,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             ss.setSpan(new URLSpan("http://baidu.com"), 10, 12, SpannableString.SPAN_INCLUSIVE_EXCLUSIVE);
             text1.setMovementMethod(new LinkMovementMethod());
             // 图片
-            Drawable d = getResources().getDrawable(R.drawable.common_ic_googleplayservices);
+            Drawable d = getResources().getDrawable(R.drawable.item_image_default);
             d.setBounds(0, 0, d.getIntrinsicWidth(), d.getIntrinsicHeight());
             ss.setSpan(new ImageSpan(d), 13, 14, SpannableString.SPAN_INCLUSIVE_EXCLUSIVE);
             //点击事件
@@ -103,6 +106,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             startActivity(intent);
         }else if(v.getId() == R.id.ad_btn){
             Intent intent = new Intent(this, AdActivity.class);
+            startActivity(intent);
+        }else if(v.getId() == R.id.svg＿btn){
+            Intent intent = new Intent(this, SvgClockActivity.class);
             startActivity(intent);
         }
 

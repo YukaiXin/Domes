@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".activitys.MainActivity">
 
 <LinearLayout
     android:layout_width="match_parent"
@@ -31,6 +31,12 @@
         android:text="Advter"
         android:id="@+id/ad_btn" />
 
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SVG"
+        android:id="@+id/svg＿btn" />
     <TextView
         android:id="@+id/text1"
         android:layout_width="wrap_content"

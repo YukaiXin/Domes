@@ -17,4 +17,14 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+
+
+    <style name="LyTheme3" parent="LyTheme">
+        <item name="lyColor0">@color/colorYellow</item>
+        <item name="lyColor1">@color/colorRed</item>
+        <item name="lyColor2">@color/colorGreen</item>
+        <item name="lyColorColon">@color/colorBlue</item>
+        <item name="lyThickness">7</item>
+        <item name="lyColonThickness">1</item>
+    </style>
 </resources>

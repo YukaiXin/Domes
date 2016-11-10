@@ -1,4 +1,4 @@
-package com.kxyu.domes;
+package com.kxyu.domes.activitys;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -27,7 +27,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.kxyu.domes.R;
 import com.kxyu.domes.Utils.HttpClientUtil;
+import com.kxyu.domes.VideoDataEntry;
+import com.kxyu.domes.VideosListRecyclerAdapter;
 import com.kxyu.domes.callback.OnItemClickListener;
 import com.kxyu.domes.okhttp.callback.StringCallback;
 

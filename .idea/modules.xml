@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Domes.iml" filepath="$PROJECT_DIR$/Domes.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/googleioclock/googleioclock.iml" filepath="$PROJECT_DIR$/googleioclock/googleioclock.iml" />
     </modules>
   </component>
 </project>

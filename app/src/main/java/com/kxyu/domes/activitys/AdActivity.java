@@ -1,4 +1,4 @@
-package com.kxyu.domes;
+package com.kxyu.domes.activitys;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +9,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestManager;
 import com.kxyu.domes.Common.GlideRoundTransform;
+import com.kxyu.domes.R;
 import com.lewa.advert.api.AdData;
 import com.lewa.advert.api.AdImageInfo;
 import com.lewa.advert.api.AdLoader;

@@ -155,4 +155,10 @@
         <color name="navy">#000080</color><!--海军色 -->
         <color name="black">#000000</color><!--黑色 -->
 
+
+    <color name="colorRed">#e33e2b</color>
+    <color name="colorYellow">#f1b500</color>
+    <color name="colorGreen">#2ba14b</color>
+    <color name="colorBlue">#3a7cec</color>
+    <color name="colorDarkBlue">#3F51B5</color>
 </resources>
