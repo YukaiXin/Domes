@@ -30,6 +30,7 @@ import com.kxyu.domes.R;
  */
 public class MainActivity extends BaseActivity implements View.OnClickListener {
 
+    Button mSollViewPager;
     Button mGridViewBtn;
     Button mVideoBtn;
     Button mAdBtn;
@@ -44,6 +45,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     }
 
     public void initView(){
+        mSollViewPager = (Button) findViewById(R.id.sollviewpager);
+        mSollViewPager.setOnClickListener(this);
         mGridViewBtn = (Button) findViewById(R.id.button);
         mVideoBtn = (Button) findViewById(R.id.button2);
         mGridViewBtn.setOnClickListener(this);
@@ -109,6 +112,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             startActivity(intent);
         }else if(v.getId() == R.id.svg＿btn){
             Intent intent = new Intent(this, SvgClockActivity.class);
+            startActivity(intent);
+        }else if(v.getId() == R.id.sollviewpager){
+            Intent intent = new Intent(this, SollBanderActivity.class);
             startActivity(intent);
         }
 
