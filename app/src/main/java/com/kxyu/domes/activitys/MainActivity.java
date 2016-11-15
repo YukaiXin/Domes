@@ -18,6 +18,7 @@ import android.text.style.StyleSpan;
 import android.text.style.URLSpan;
 import android.util.TypedValue;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -53,6 +54,20 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         mVideoBtn.setOnClickListener(this);
         mAdBtn = (Button) findViewById(R.id.ad_btn);
         textView = (TextView) findViewById(R.id.text2);
+        textView.setText(R.string.testTexts);
+        ViewTreeObserver observer = textView.getViewTreeObserver();
+        observer.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+
+            @Override
+            public void onGlobalLayout() {
+                ViewTreeObserver obs = textView.getViewTreeObserver();
+                obs.removeGlobalOnLayoutListener(this);
+                if (textView.getLineCount() >= 2) {
+                    textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 15);
+                }
+            }
+        });
+
         mAdBtn.setOnClickListener(this);
         mSvgButton = (Button) findViewById(R.id.svg＿btn);
         mSvgButton.setOnClickListener(this);
