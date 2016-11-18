@@ -47,11 +47,18 @@
             />
 
         <activity
+            android:name=".activitys.JsonActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar"
+            />
+        <activity
             android:name=".GridViewDemo.GridViewActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar"
             />
+
 
         <activity
             android:name=".activitys.SvgClockActivity"

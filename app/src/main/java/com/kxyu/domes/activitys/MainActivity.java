@@ -37,6 +37,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     Button mAdBtn;
     TextView textView;
     Button mSvgButton;
+    Button mJsonBtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +47,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     }
 
     public void initView(){
+        mJsonBtn = (Button) findViewById(R.id.jsonbtn);
+        mJsonBtn.setOnClickListener(this);
+
         mSollViewPager = (Button) findViewById(R.id.sollviewpager);
         mSollViewPager.setOnClickListener(this);
         mGridViewBtn = (Button) findViewById(R.id.button);
@@ -130,6 +134,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             startActivity(intent);
         }else if(v.getId() == R.id.sollviewpager){
             Intent intent = new Intent(this, SollBanderActivity.class);
+            startActivity(intent);
+        }else if(v.getId() == R.id.jsonbtn){
+            Intent intent = new Intent(this, JsonActivity.class);
             startActivity(intent);
         }
 

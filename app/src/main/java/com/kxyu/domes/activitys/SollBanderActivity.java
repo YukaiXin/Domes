@@ -2,18 +2,12 @@ package com.kxyu.domes.activitys;
 
 import android.app.Activity;
 import android.graphics.Color;
-import android.media.Image;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.google.android.gms.appindexing.Action;
-import com.google.android.gms.appindexing.AppIndex;
-import com.google.android.gms.appindexing.Thing;
-import com.google.android.gms.common.api.GoogleApiClient;
 import com.jude.rollviewpager.RollPagerView;
 import com.jude.rollviewpager.adapter.LoopPagerAdapter;
 import com.jude.rollviewpager.hintview.ColorPointHintView;
@@ -33,8 +27,12 @@ public class SollBanderActivity extends Activity {
         setContentView(R.layout.activity_banner);
 //
         rollPagerView = (RollPagerView) findViewById(R.id.rollpagerview);
+        //设置透明度
         rollPagerView.setAnimationDurtion(5000);
+        //设置适配器
         rollPagerView.setAdapter(new testAdapter(rollPagerView));
+        //播放时间间隔
+        // / rollPagerView.setPlayDelay();
         rollPagerView.setHintView(new ColorPointHintView(this, Color.WHITE, Color.GRAY));
     }
 
