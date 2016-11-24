@@ -38,6 +38,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     TextView textView;
     Button mSvgButton;
     Button mJsonBtn;
+    Button mGestureBtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,7 +51,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         mJsonBtn = (Button) findViewById(R.id.jsonbtn);
         mJsonBtn.setOnClickListener(this);
 
-        mSollViewPager = (Button) findViewById(R.id.sollviewpager);
+        mGestureBtn = (Button) findViewById(R.id.gbtn);
+        mGestureBtn.setOnClickListener(this);
+                mSollViewPager = (Button) findViewById(R.id.sollviewpager);
         mSollViewPager.setOnClickListener(this);
         mGridViewBtn = (Button) findViewById(R.id.button);
         mVideoBtn = (Button) findViewById(R.id.button2);
@@ -137,6 +140,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             startActivity(intent);
         }else if(v.getId() == R.id.jsonbtn){
             Intent intent = new Intent(this, JsonActivity.class);
+            startActivity(intent);
+        }else if(v.getId() == R.id.gbtn){
+            Intent intent = new Intent(this, GestureActivity.class);
             startActivity(intent);
         }
 

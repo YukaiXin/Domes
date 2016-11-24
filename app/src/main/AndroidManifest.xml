@@ -67,6 +67,12 @@
             android:theme="@style/AppTheme.NoActionBar"
 ></activity>
         <activity
+            android:name=".activitys.GestureActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar"
+            ></activity>
+        <activity
             android:name=".activitys.SollBanderActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:label="@string/app_name"
