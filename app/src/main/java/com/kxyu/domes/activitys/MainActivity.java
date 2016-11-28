@@ -1,12 +1,16 @@
 package com.kxyu.domes.activitys;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.TextPaint;
+import android.text.TextUtils;
 import android.text.method.LinkMovementMethod;
 import android.text.style.AbsoluteSizeSpan;
 import android.text.style.BackgroundColorSpan;
@@ -16,6 +20,7 @@ import android.text.style.ImageSpan;
 import android.text.style.StrikethroughSpan;
 import android.text.style.StyleSpan;
 import android.text.style.URLSpan;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewTreeObserver;
@@ -147,4 +152,34 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         }
 
     }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        unregisterReceiver(mHomeKeyEventReceiver);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        registerReceiver(mHomeKeyEventReceiver, new IntentFilter(
+                Intent.ACTION_CLOSE_SYSTEM_DIALOGS));
+    }
+
+    private BroadcastReceiver mHomeKeyEventReceiver = new BroadcastReceiver() {
+        String SYSTEM_REASON = "reason";
+        String SYSTEM_HOME_KEY = "homekey";
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String action = intent.getAction();
+            if (action.equals(Intent.ACTION_CLOSE_SYSTEM_DIALOGS)) {
+                String reason = intent.getStringExtra(SYSTEM_REASON);
+                if (TextUtils.equals(reason, SYSTEM_HOME_KEY)) {
+                    finish();
+                    Log.i("kxyu_home","More  Home");
+                }
+            }
+        }
+    };
 }
