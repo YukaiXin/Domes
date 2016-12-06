@@ -3,6 +3,13 @@
     <declare-styleable name="View">
         <attr name="textColor" format="color" />
         <attr name="textSize" format="dimension" />
+
+
+        <!-- Layout to build a card. Default value is  @layout/card_base_layout -->
+        <attr name="card_layout_resourceID" format="reference"/>
+        <!-- Layout to build a shadow. Default value is @layout/base_shadow_layout -->
+        <attr name="card_shadow_layout_resourceID" format="reference"/>
+        <attr name="card_header_layout_resourceID" format="reference"/>
     </declare-styleable>
 
 
