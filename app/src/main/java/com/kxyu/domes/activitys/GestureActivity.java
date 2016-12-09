@@ -1,10 +1,6 @@
 package com.kxyu.domes.activitys;
 
-/**
- * author:write by harvic
- * date:2014-9-26
- * address:blog.csdn.net/harvic880925
- */
+
 
         import android.app.Activity;
         import android.os.Bundle;
