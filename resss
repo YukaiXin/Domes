@@ -1,0 +1,12 @@
+
+Environment.getDataDirectory().getPath() : /data
+Environment.getDownloadCacheDirectory().getPath()  : /cache
+Environment.getExternalStorageDirectory().getPath(): /mnt/sdcard
+Environment.getRootDirectory().getPath()           : /system
+Context.getCacheDir().getPath()                    : /data/data/com.zhd/cache
+Context.getExternalCacheDir().getPath()            : /mnt/sdcard/Android/data/com.zhd/cache
+Context.getFilesDir().getPath()                    : /data/data/com.zhd/files
+Context.getObbDir().getPath()                      : /mnt/sdcard/Android/obb/com.zhd
+Context.getPackageName()                           : com.zhd
+Context.getPackageCodePath()                       : /data/app/com.zhd-1.apk
+Context.getPackageResourcePath()                   : /data/app/com.zhd-1.apk
