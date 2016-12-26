@@ -48,14 +48,6 @@ public class GestureActivity  extends Activity implements OnTouchListener{
 
             final int FLING_MIN_DISTANCE = 100, FLING_MIN_VELOCITY = 200;
 
-            // �������� ��
-            // X�������λ�ƴ���FLING_MIN_DISTANCE�����ƶ��ٶȴ���FLING_MIN_VELOCITY������/��
-
-            // �������ͣ�
-            // e1����1��ACTION_DOWN MotionEvent
-            // e2�����һ��ACTION_MOVE MotionEvent
-            // velocityX��X���ϵ��ƶ��ٶȣ�����/��
-            // velocityY��Y���ϵ��ƶ��ٶȣ�����/��
             public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX,
                                    float velocityY) {
 
