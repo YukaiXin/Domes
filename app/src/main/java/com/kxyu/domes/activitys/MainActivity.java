@@ -44,6 +44,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     Button mSvgButton;
     Button mJsonBtn;
     Button mGestureBtn;
+    Button mItemDrag;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +56,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     public void initView(){
         mJsonBtn = (Button) findViewById(R.id.jsonbtn);
         mJsonBtn.setOnClickListener(this);
+
+        mItemDrag = (Button) findViewById(R.id.item_drag);
+        mItemDrag.setOnClickListener(this);
 
         mGestureBtn = (Button) findViewById(R.id.gbtn);
         mGestureBtn.setOnClickListener(this);
@@ -149,8 +153,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         }else if(v.getId() == R.id.gbtn){
             Intent intent = new Intent(this, GestureActivity.class);
             startActivity(intent);
+        }else if (v.getId() == R.id.item_drag){
+            Intent intent = new Intent(this, RecyclerviewActivity.class);
+            startActivity(intent);
         }
-
     }
 
     @Override

@@ -10,21 +10,24 @@ package com.kxyu.domes.Adapter;
         import android.support.v4.content.ContextCompat;
         import android.support.v7.widget.helper.ItemTouchHelper;
         import android.text.TextUtils;
+        import android.util.Log;
         import android.view.View;
         import android.view.ViewGroup;
         import android.widget.TextView;
 
         import com.kxyu.domes.R;
 
+        import java.util.List;
 
-public class ChannelAdapter extends BaseRecyclerAdapter<CardInfo>  implements ItemTouchHelperAdapter
+
+public class ChannelAdapter extends BaseRecyclerAdapter<String>  implements ItemTouchHelperAdapter
 {
-
+    final String TAG = "ChannelAdapter";
     private PickUpAnimationHelper pickUpAnimationHelper;
     private boolean mIsSelected = false;
-    private List<CardInfo> mDataList;
+    private List<String> mDataList;
 
-    public ChannelAdapter(Context context, List<CardInfo> data, boolean useAnimation, boolean isSelected) {
+    public ChannelAdapter(Context context, List<String> data, boolean useAnimation, boolean isSelected) {
         super(context, data, useAnimation);
         this.mIsSelected = isSelected;
         this.mDataList = data;
@@ -39,19 +42,16 @@ public class ChannelAdapter extends BaseRecyclerAdapter<CardInfo>  implements It
     public NewsChannelHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         final NewsChannelHolder holder = new NewsChannelHolder(mContext,
                 mInflater.inflate(getItemLayoutId(viewType), parent, false));
-        if (mClickListener != null) {
-            holder.itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    mClickListener.onItemClick(v, holder.getLayoutPosition());
-                }
+//        if (mClickListener != null) {
+//            holder.itemView.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    mClickListener.onItemClick(v, holder.getLayoutPosition());
+//                }
+//
+//            });
+//        }
 
-            });
-        }
-
-        if (pickUpAnimationHelper != null) {
-            pickUpAnimationHelper.onChangeViewHolder(holder);
-        }
         return holder;
     }
 
@@ -61,61 +61,22 @@ public class ChannelAdapter extends BaseRecyclerAdapter<CardInfo>  implements It
     }
 
     @Override
-    public void bindData(final BaseRecyclerViewHolder holder, int position, CardInfo cardInfo) {
-//        String title = null;
-//
-//        if(cardInfo != null)
-//            if (!TextUtils.isEmpty(cardInfo.showTitleName)) {
-//                String[] mShowTitleNameArray = cardInfo.showTitleName.split(",");
-//                if (Constant.LANGUAGE_INDEX < mShowTitleNameArray.length) {
-//                    title = mShowTitleNameArray[Constant.LANGUAGE_INDEX] ;
-//                } else {
-//                    title = mShowTitleNameArray[0];
-//                }
-//            } else {
-//                if(cardInfo.type == RecyclerListAdapter.CARD_TYPE_PHOTOS || cardInfo.type == RecyclerListAdapter.CARD_TYPE_VIDEOS ||cardInfo.type == RecyclerListAdapter.CARD_TYPE_NEWS){
-//                    if(Constant.SYSTEM_LANGUAGE.equals("hi"))
-//                        title = NewsCard.getShowName(mContext, cardInfo.cardName);
-//                    else
-//                        title = cardInfo.cardName;
-//                }else {
-//                    title = cardInfo.cardName;
-//                }
-//            }
-//
-//        if(mIsSelected){
-//            if(!TextUtils.isEmpty(title)){
-//                if(!((NewsChannelHolder)holder).mIsLongClick)
-//                    holder.getView(R.id.channel_item_background).setBackgroundColor(ContextCompat.getColor(mContext,R.color.white));
-//                holder.getTextView(R.id.channel_item_title).setText(title);
-//                holder.getTextView(R.id.channel_item_title).setTextColor(Color.BLACK);
-//
-//
-//            }else {
-//                holder.getTextView(R.id.channel_item_title).setText("");
-//                holder.getView(R.id.channel_item_background).setBackgroundColor(ContextCompat.getColor(mContext,R.color.channel_item_background_color));
-//                holder.getImageView(R.id.channel_item_background_rectangle).setBackgroundResource(R.mipmap.channel_rectangle);
-//                holder.getView(R.id.channel_item_background).setBackgroundColor(ContextCompat.getColor(mContext,R.color.channel_item_background_color));
-//            }
-//        }else {
-//            if(!TextUtils.isEmpty(title)) {
-//                holder.getTextView(R.id.channel_item_title).setText(title);
-//                holder.getTextView(R.id.channel_item_title).setTextColor(ContextCompat.getColor(mContext,R.color.channel_item_title_color));
-//                holder.getView(R.id.channel_item_background).setBackgroundColor(ContextCompat.getColor(mContext, R.color.channel_item_background_color));
-//                holder.getImageView(R.id.channel_item_background_rectangle).setBackgroundResource(R.mipmap.rectangle_real_background);
-//            }else {
-//
-//                holder.getTextView(R.id.channel_item_title).setText("");
-//                holder.getImageView(R.id.channel_item_background_rectangle).setBackgroundResource(R.mipmap.channel_virtual_rectangle);
-//                holder.getView(R.id.channel_item_background).setBackgroundColor(ContextCompat.getColor(mContext,R.color.channel_item_background_color));
-//            }
-//        }
+    public void bindData(final BaseRecyclerViewHolder holder, int position,  String str) {
+       String title =  str;
+
+            if(!TextUtils.isEmpty(title)){
+               if(!((NewsChannelHolder)holder).mIsLongClick)
+                holder.getView(R.id.channel_item_background).setBackgroundColor(ContextCompat.getColor(mContext,R.color.cadetblue));
+                holder.getTextView(R.id.channel_item_title).setText(title);
+                holder.getTextView(R.id.channel_item_title).setTextColor(Color.BLACK);
+            }
+
 
 
         holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-
+                ((NewsChannelHolder)holder).mIsLongClick = true;
                 if (pickUpAnimationHelper != null) {
                     //start pickUp mode
                     ItemTouchHelper mItemTouchHelper = pickUpAnimationHelper.getItemTouchHelper();
@@ -130,7 +91,7 @@ public class ChannelAdapter extends BaseRecyclerAdapter<CardInfo>  implements It
 
     }
 
-    public  List<CardInfo> getDataList(){
+    public  List<String> getDataList(){
         return mDataList;
     }
 
@@ -142,7 +103,7 @@ public class ChannelAdapter extends BaseRecyclerAdapter<CardInfo>  implements It
 //        }
         int form = fromPosition;
         int to = toPosition;
-        CardInfo prev = mDataList.remove(fromPosition);
+        String prev = mDataList.remove(fromPosition);
         mDataList.add(toPosition, prev);
         notifyItemMoved(form, to);
     }
@@ -166,6 +127,9 @@ public class ChannelAdapter extends BaseRecyclerAdapter<CardInfo>  implements It
             return mIsSelected;
         }
 
+        public void setLongClick(){
+            mIsLongClick = true;
+        }
         public NewsChannelHolder(Context context, View itemView) {
             super(context, itemView);
         }
@@ -174,15 +138,16 @@ public class ChannelAdapter extends BaseRecyclerAdapter<CardInfo>  implements It
         @Override
         public void onItemSelected() {
             mIsLongClick = true;
-            this.getView(R.id.channel_item_background).setBackgroundColor(ContextCompat.getColor(mContext,R.color.transparent));
+            Log.i(TAG,"onItemSelected");
+            this.getView(R.id.channel_item_background).setBackgroundColor(ContextCompat.getColor(mContext,R.color.ghostwhite));
         }
 
         @Override
         public void onItemClear() {
             mIsLongClick = false;
+            Log.i(TAG,"onItemClear");
             this.getView(R.id.channel_item_background).setBackgroundColor(ContextCompat.getColor(mContext,R.color.white));
         }
     }
-
 }
 

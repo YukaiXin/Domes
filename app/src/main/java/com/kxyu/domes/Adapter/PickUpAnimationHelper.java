@@ -39,28 +39,17 @@ public class PickUpAnimationHelper {
         return mItemTouchHelper;
     }
 
-
-    public void onChangeViewHolder(RecyclerView.ViewHolder viewHolder) {
-        if(viewHolder instanceof RecyclerListAdapter.ItemViewHolder) {
-            RecyclerListAdapter.ItemViewHolder  itemViewHolder = (RecyclerListAdapter.ItemViewHolder) viewHolder;
-//            itemViewHolder.cardView.setUpChangeAnimation(isChange, mCurrentClickCard);
-        }
-    }
-
-//    public void startChange(boolean isChange) {
-//        this.isChange = isChange;
-//        this.mCurrentClickCard = card;
-//        mRecyclerView.postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//                mAdapter.notifyItemRangeChanged(1, mAdapter.getItemCount());
-//            }
-//        }, 10);
-//
+ //   public void onChangeViewHolder(RecyclerView.ViewHolder viewHolder) {
+//        if(viewHolder instanceof RecyclerListAdapter.ItemViewHolder) {
+//            RecyclerListAdapter.ItemViewHolder  itemViewHolder = (RecyclerListAdapter.ItemViewHolder) viewHolder;
+////            itemViewHolder.cardView.setUpChangeAnimation(isChange, mCurrentClickCard);
+//        }
 //    }
+//
 
     public void startChange(boolean isChange) {
         this.isChange = isChange;
+
         mRecyclerView.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -69,6 +58,17 @@ public class PickUpAnimationHelper {
         }, 10);
 
     }
+
+//    public void startChange(boolean isChange) {
+//        this.isChange = isChange;
+//        mRecyclerView.postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                mAdapter.notifyItemRangeChanged(1, mAdapter.getItemCount());
+//            }
+//        }, 10);
+//
+//    }
 
     public void  doRecycleWaste() {
         if(mAdapter != null) mAdapter = null;
@@ -90,7 +90,7 @@ public class PickUpAnimationHelper {
         @Override
         public void clearView(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder) {
             super.clearView(recyclerView, viewHolder);
-            startChange(false , null);
+            startChange(false );
         }
 
         @Override

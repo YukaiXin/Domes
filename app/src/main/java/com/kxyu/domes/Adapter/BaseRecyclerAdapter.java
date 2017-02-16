@@ -18,7 +18,6 @@ import java.util.List;
  * Created by yuki_cool on 2017/2/15.
  */
 
-
 public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseRecyclerViewHolder> {
     protected List<T> mData;
     protected Context mContext;
@@ -34,7 +33,6 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseRe
     public BaseRecyclerAdapter(Context context, List<T> data, boolean useAnimation, RecyclerView.LayoutManager layoutManager) {
         mContext = context;
         mUseAnimation = useAnimation;
-
         mData = data == null ? new ArrayList<T>() : data;
         mInflater = LayoutInflater.from(context);
     }
@@ -94,7 +92,6 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseRe
         notifyItemRemoved(pos);
     }
 
-
     public List<T> getData() {
         return mData;
     }
@@ -106,7 +103,6 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseRe
 
     @Override
     public int getItemCount() {
-
         return mData.size();
     }
 
