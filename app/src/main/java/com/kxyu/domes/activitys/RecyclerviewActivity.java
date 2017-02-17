@@ -2,7 +2,6 @@ package com.kxyu.domes.activitys;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -10,14 +9,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.MotionEvent;
 import android.view.View;
 
-import com.kxyu.domes.Adapter.BaseSpacesItemDecoration;
-import com.kxyu.domes.Adapter.CardInfo;
-import com.kxyu.domes.Adapter.ChannelAdapter;
-import com.kxyu.domes.Adapter.PickUpAnimationHelper;
+import com.kxyu.domes.recyclerviewAdapter.BaseSpacesItemDecoration;
+import com.kxyu.domes.recyclerviewAdapter.ChannelAdapter;
+import com.kxyu.domes.recyclerviewAdapter.PickUpAnimationHelper;
 import com.kxyu.domes.R;
-import com.kxyu.domes.Utils.ClickUtils;
 import com.kxyu.domes.Utils.MeasureUtil;
-import com.kxyu.domes.callback.OnItemClickListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,12 +24,12 @@ import java.util.List;
 
 public class RecyclerviewActivity extends Activity {
     final int ITEM_TOUCH_DISPALY_SIZE = 20;
+
     RecyclerView mSelectRecyclerView;
-
     ChannelAdapter mSelectAdapter;
-
     List<String> mSelectlist = new ArrayList<>() ;
     PickUpAnimationHelper mPickUpAnimationHelper;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

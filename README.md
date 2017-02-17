@@ -6,3 +6,6 @@ Android 学习
     Recyclerview 加载网络数据时，item绑定数据 ，view的创建和数据的请求要分开，以免造成相同type的View的复用。
     
     Recyclerview 中item 实现拖拽排序，item的可拖拽范围，可以通过截获touch事件来限制item的可拖拽范围。
+
+    ![截屏](https://github.com/YukaiXin/Domes/blob/master/Readme_pic/Screenshot_1.png)
+    ![截屏](https://github.com/YukaiXin/Domes/blob/master/Readme_pic/Screenshot_2.png)

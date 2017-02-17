@@ -1,10 +1,8 @@
-package com.kxyu.domes.Adapter;
+package com.kxyu.domes.recyclerviewAdapter;
 
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
-
-
 
 /**
  * Created by chyang on 16-8-24.

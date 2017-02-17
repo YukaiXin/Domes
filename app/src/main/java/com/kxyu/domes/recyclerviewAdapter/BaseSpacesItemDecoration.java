@@ -1,4 +1,4 @@
-package com.kxyu.domes.Adapter;
+package com.kxyu.domes.recyclerviewAdapter;
 
 /**
  * Created by yuki_cool on 2017/2/16.

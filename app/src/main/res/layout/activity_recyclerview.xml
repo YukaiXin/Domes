@@ -10,7 +10,6 @@
         android:id="@+id/recycler_view_one"
         android:background="@color/chocolate"
         >
-
     </android.support.v7.widget.RecyclerView>
 
 </LinearLayout>

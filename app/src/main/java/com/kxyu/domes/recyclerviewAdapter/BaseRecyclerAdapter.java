@@ -1,4 +1,4 @@
-package com.kxyu.domes.Adapter;
+package com.kxyu.domes.recyclerviewAdapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
