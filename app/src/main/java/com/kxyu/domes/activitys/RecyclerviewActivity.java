@@ -40,7 +40,7 @@ public class RecyclerviewActivity extends Activity {
 
     public void setDatasList(){
         String tempStr;
-        for (int i = 0 ; i < 20 ; i++){
+        for (int i = 0 ; i < 80 ; i++){
             tempStr = "item "+ String.valueOf(i);
             mSelectlist.add(tempStr);
         }
