@@ -13,15 +13,35 @@
             >
         </android.support.v7.widget.RecyclerView>
 
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="42dp"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true">
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="42dp"
+        android:layout_height="match_parent"
         android:text="底部"
         android:gravity="center"
         android:textStyle="bold"
         android:textSize="20dip"
         android:id="@+id/empty_view"
-        android:layout_alignParentBottom="true"
         android:background="@color/greenyellow"
         />
+
+    <Switch
+        android:layout_alignParentRight="true"
+        android:scrollbarStyle="insideInset"
+        android:switchMinWidth="40dp"
+        android:textOff="Open"
+        android:textOn="Close"
+        android:drawableBottom="@color/antiquewhite"
+        android:layout_alignRight="@+id/empty_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:id="@+id/switch1" />
+    >
+
+    </RelativeLayout>
+
 </RelativeLayout>
