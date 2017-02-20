@@ -139,7 +139,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             Intent intent = new Intent(this, VideoShowActivity.class);
             startActivity(intent);
         }else if(v.getId() == R.id.ad_btn){
-            Intent intent = new Intent(this, AdActivity.class);
+            Intent intent = new Intent(this, CornerPicActivity.class);
             startActivity(intent);
         }else if(v.getId() == R.id.svg＿btn){
             Intent intent = new Intent(this, SvgClockActivity.class);
