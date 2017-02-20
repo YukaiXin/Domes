@@ -33,13 +33,13 @@
         android:layout_alignParentRight="true"
         android:scrollbarStyle="insideInset"
         android:switchMinWidth="40dp"
-        android:textOff="Open"
-        android:textOn="Close"
-        android:drawableBottom="@color/antiquewhite"
         android:layout_alignRight="@+id/empty_view"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:id="@+id/switch1" />
+        android:id="@+id/switch1"
+        android:thumb="@drawable/switch_thumb"
+        android:track="@drawable/switch_selector"
+        />
     >
 
     </RelativeLayout>
