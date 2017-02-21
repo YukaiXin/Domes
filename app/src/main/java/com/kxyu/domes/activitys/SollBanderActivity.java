@@ -10,9 +10,12 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.RequestManager;
 import com.jude.rollviewpager.RollPagerView;
 import com.jude.rollviewpager.adapter.LoopPagerAdapter;
 import com.jude.rollviewpager.hintview.ColorPointHintView;
+import com.kxyu.domes.Common.GRoundCornersTransformation;
 import com.kxyu.domes.R;
 
 /**
@@ -54,7 +57,9 @@ public class SollBanderActivity extends Activity {
 
     private class testAdapter extends LoopPagerAdapter {
 
-        private int[] images = {R.drawable.p1, R.drawable.p2, R.drawable.p3};
+        private String[] images = {"http://static.youappi.com/creatives/Apps/66553/default/1200x628.jpg",
+                "http://static.youappi.com/creatives/Apps/71174/default/1200x628.jpg",
+                "http://static.youappi.com/creatives/Apps/16849/default/1200x628.jpg"};
         private int count = images.length;
 
         public testAdapter(RollPagerView viewPager) {
@@ -66,8 +71,12 @@ public class SollBanderActivity extends Activity {
 
             final int picNo = position + 1;
             final ImageView imageView = new ImageView(container.getContext());
-            imageView.setImageResource(images[position]);
-            imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+            RequestManager requestManager = Glide.with(SollBanderActivity.this);
+
+            requestManager.load(images[position]).
+                    bitmapTransform(new GRoundCornersTransformation(SollBanderActivity.this, 10, 0, GRoundCornersTransformation.CornerType.BOTTOM)).placeholder(R.drawable.item_image_default).into(imageView);
+
+           // imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
             imageView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
 
             imageView.setOnClickListener(new View.OnClickListener() {

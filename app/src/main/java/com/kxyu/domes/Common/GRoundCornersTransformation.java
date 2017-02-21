@@ -1,18 +1,18 @@
 package com.kxyu.domes.Common;
 
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapShader;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.RectF;
-import android.graphics.Shader;
+        import android.content.Context;
+        import android.graphics.Bitmap;
+        import android.graphics.BitmapShader;
+        import android.graphics.Canvas;
+        import android.graphics.Paint;
+        import android.graphics.RectF;
+        import android.graphics.Shader;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.Transformation;
-import com.bumptech.glide.load.engine.Resource;
-import com.bumptech.glide.load.engine.bitmap_recycle.BitmapPool;
-import com.bumptech.glide.load.resource.bitmap.BitmapResource;
+        import com.bumptech.glide.Glide;
+        import com.bumptech.glide.load.Transformation;
+        import com.bumptech.glide.load.engine.Resource;
+        import com.bumptech.glide.load.engine.bitmap_recycle.BitmapPool;
+        import com.bumptech.glide.load.resource.bitmap.BitmapResource;
 
 /**
  * Created by yuki_cool on 2017/2/20.
@@ -60,12 +60,12 @@ public class GRoundCornersTransformation implements Transformation<Bitmap> {
     }
 
     public GRoundCornersTransformation(Context context, int radius, int margin,
-                                        CornerType cornerType) {
+                                       CornerType cornerType) {
         this(Glide.get(context).getBitmapPool(), radius, margin, cornerType);
     }
 
     public GRoundCornersTransformation(BitmapPool pool, int radius, int margin,
-                                        CornerType cornerType) {
+                                       CornerType cornerType) {
         mBitmapPool = pool;
         mRadius = radius;
         mDiameter = mRadius * 2;
